@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Restringido</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url(https://c.tenor.com/oJoWZIWxt3wAAAAC/tenor.gif) no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #ffffff;
+        }
+        .container {
+            margin-top: 100px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #004006;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #a02661;
+        }
+        #message {
+            margin-top: 20px;
+            color: #83ff74;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Acceso Restringido</h1>
+        <p>Introduce la contraseña:</p>
+        <input type="password" id="password" placeholder="Contraseña">
+        <button onclick="checkPassword()">Enviar</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const correctPassword = '166';
+        let attemptsLeft = 7;
+
+        function checkPassword() {
+            const inputPassword = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+
+if (inputPassword === correctPassword) {
+                messageDiv.innerHTML = `
+-Maestro, estoy en problemas. Lo que he descubierto es aterrador. La información es mucho más grave de lo que imaginé.<br>
+
+-¿Qué pasa exactamente? ¿Qué has descubierto?<br>
+
+-He infiltrado una base de datos gubernamental. La información que tengo pone en riesgo a muchas personas: corrupción, trata de personas, venta de armas.<br>
+
+
+-Es grave. Necesitas actuar con cautela. Lo primero es contactar a Anonymus. Ellos tienen la experiencia para manejar esto.<br>
+
+¿Y si vienen a por mí? Estoy realmente asustado. ¿Qué hago?<br>
+
+
+-Primero, no entres en pánico. Crea un protocolo de emergencia. Deja todo programado para que se active si te capturan.<br>
+
+- Un protocolo?<br>
+
+
+- Si Carlos, tienes que dejar un protocolo programado donde se pueda acceder a todos los archivos, pero cuidado, no puedes confiar en cualquiera, hazlo para aquella persona en la que mas puedas confiar. Ella deberá contactar con Morfeo y trazar un plan para liberarte en caso de que te tengan preso. Siempre recuerda que la copia en hardware deberá estar a salvo.<br>
+
+
+-¿Dónde guardo la copia en hardware?<br>
+
+- Elige un lugar seguro y discreto. Puede ser en una caja de seguridad o un escondite fuera de tu hogar. La discrección es clave.<br>
+
+
+- ¿Y si ella no puede hablar con Morfeo?<br>
+
+
+- Deberá hacerlo de inmediato. El sabe cómo manejar estas situaciones.<br>
+
+- Estoy muy nervioso, maestro. ¿Qué hago si todo sale mal? <br>
+
+- No tengas miedo. La información que tienes es valiosa. Confiar en tu plan y en la persona a la que has elegido es crucial. <br>
+
+- Gracias, maestro. Trataré de hacer todo lo que me has dicho.<br>
+
+- Buena suerte. Mantén la cabeza fría y actúa con rapidez. Todo saldrá bien si sigues las instrucciones.<br> <br>
+
+FIN DE LA TRANSMISION
+
+                `;
+                document.querySelector('input[type="password"]').style.display = 'none';
+                document.querySelector('button').style.display = 'none';
+            } else {
+                attemptsLeft--;
+                if (attemptsLeft > 0) {
+                    messageDiv.innerHTML = `<p style='color: #ffcccc;'>Contraseña incorrecta. Intentos restantes: ${attemptsLeft}</p>`;
+                } else {
+                    messageDiv.innerHTML = "<p style='color: #ffcccc;'>Se han agotado los intentos. Recarga la pagina e intentalo de nuevo y recuerda, la distancia que nos separa.</p>";
+                    document.querySelector('input[type="password"]').style.display = 'none';
+                    document.querySelector('button').style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
